@@ -1,0 +1,46 @@
+.quester {
+   background-color: rgb(0, 255, 162);
+   margin: 5px;
+   padding: 5px;
+   /* display: block; */
+   width: fit-content;
+   width: -moz-fit-content;
+}
+.questionText {
+   background-color: rgb(168, 88, 161);
+   margin: 5px;
+   padding: 5px;
+   /* display: block; */
+   width: fit-content;
+   width: -moz-fit-content;
+   white-space: normal; 
+}
+
+.answerText {
+   background-color: rgb(105, 105, 179);
+   margin: 10px;
+   padding: 5px;
+   display: block;
+   width: fit-content;
+   width: -moz-fit-content;
+}
+
+.answer {
+   background-color: rgb(107, 92, 92);
+   margin: 5px;
+   padding: 5px;
+   display: block;
+   width: fit-content;
+   width: -moz-fit-content;
+}
+
+.scroll {
+   /* margin:4px, 4px; */
+   padding:4px;
+   background-color: green;
+   /* width: 500px; */
+   height: 30rem;
+   overflow-x: hidden;
+   overflow-y: auto;
+   text-align:justify;
+}
