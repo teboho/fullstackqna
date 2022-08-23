@@ -43,7 +43,7 @@ function Answers() {
 
    // prepare the element to render
    return (
-      <div>
+      <div className="container">
          <h1>Answers</h1>
          <div className="scroll">
             <ul>
