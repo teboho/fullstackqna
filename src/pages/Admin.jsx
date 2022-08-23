@@ -11,7 +11,13 @@ function Admin() {
       if (pass === 'ladiesman217') {
          // Route to Respond page
          window.location.href = "/Respond";
-      }      
+      } else {
+         document.getElementById("error").innerHTML = "";
+         setTimeout(() => {
+            setPass("");
+            document.getElementById("error").innerHTML = "Incorrect Pass | You are probably not authorised to be on this part of the site";
+         }, 250);
+      }     
    }
 
   return (
@@ -23,6 +29,7 @@ function Admin() {
             <input type="text" className="form-control" id="pass" name="pass" value={pass} onChange={(e) => setPass(e.target.value)} />
          </div>
          <button className="btn btn-primary mb-2" type="submit">Login</button>
+         <div className="alert alert-danger" id="error"></div>
       </form>
     </div>
   );
