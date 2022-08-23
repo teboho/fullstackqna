@@ -26,7 +26,17 @@ function Answer(props) {
       <span className="answerText">{props.answerText}</span>
    </div>);
 
-   return answer // <li>{props.answerText}</li>
+   let answer2 = (
+      <div className="card w-50"   >
+         <div className="card-body">
+         <h5 className="card-title">Answer to {quester}'s question</h5>
+            <p className="card-text">Q: {questionText}</p>
+            <p className="card-text">A: {props.answerText}</p>
+         </div>
+      </div>
+   );
+
+   return answer2;
 }
 
 function Answers() {
@@ -44,15 +54,15 @@ function Answers() {
    // prepare the element to render
    return (
       <div className="container">
-         <h1>Answers</h1>
-         <div className="scroll">
+         <h1>Responses</h1>
+         {/* <div className="scroll"> */}
             <ul>
                {data.map((ans) => <Answer 
                key={ans.answerId} 
                answerText={ans.answerText} 
                questionId={ans.questionId} />)}
             </ul>
-         </div>
+         {/* </div> */}
       </div>
    );
 }
