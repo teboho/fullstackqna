@@ -1,9 +1,13 @@
 import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import './styles/Answers.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './pages/Layout';
 import Ask from './pages/Ask';
 import Answers from './pages/Answers';
+import Respond from './pages/Respond';
+import Admin from './pages/Admin';
+
 
 function App() {
   return (
@@ -13,6 +17,8 @@ function App() {
           <Route index element={<Ask />} />
           <Route path="/Ask" element={<Ask />} />
           <Route path="/Answers" element={<Answers />} />
+          <Route path="/Admin" element={<Admin />} />
+          <Route path="/Respond" element={<Respond />} />
         </Route>
       </Routes>
     </BrowserRouter>

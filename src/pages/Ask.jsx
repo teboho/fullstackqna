@@ -35,23 +35,34 @@ function Ask() {
   };
 
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={handleSubmit}>
-        <textarea
-          type="text"
-          value={questionText}
-          placeholder="Question?"
-          onChange={(e) => setQuestionText(e.target.value)}
-        />
-        <input
-          type="text"
-          value={quester}
-          placeholder="Who's asking?"
-          onChange={(e) => setQuester(e.target.value)}
-        />
+        <div className='mb-3'>
+          <label htmlFor='questionText'>Question</label>
+          <textarea
+            type="text"
+            id='questionText'
+            className="form-control"
+            value={questionText}
+            placeholder="Question?"
+            onChange={(e) => setQuestionText(e.target.value)}
+          />
+          {/* <div id="questionHelp" class="form-text">Well, you have to type something..</div> */}
+        </div>
+        <div className='mb-3'>
+          <label htmlFor='quester'>Your Name</label>
+          <input
+            type="text"
+            id='quester'
+            className="form-control"
+            value={quester}
+            placeholder="Who's asking?"
+            onChange={(e) => setQuester(e.target.value)}
+          />
+        </div>
         <br />
-        <button type="submit">Ask</button>
-        <div className="message">{message ? <p>{message}</p> : null}</div>
+        <button type="submit" className='btn btn-primary'>Ask</button>
+        <div className="alert alert-info">{message ? <p>{message}</p> : null}</div>
       </form>
     </div>
   );

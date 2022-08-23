@@ -11,6 +11,9 @@ function Navbar() {
             <li>
                <Link to="/Ask">Ask</Link>
             </li>
+            <li>
+               <Link to="/Admin">Admin Stuff :)</Link>
+            </li>
          </ul>
       </nav>
    );
