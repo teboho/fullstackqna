@@ -23,3 +23,7 @@ nav>ul>li a {
 nav>ul>li a:hover {
   background-color: #111;
 }
+
+.card {
+  margin-bottom: 1em;
+}
