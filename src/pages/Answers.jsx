@@ -27,7 +27,7 @@ function Answer(props) {
    </div>);
 
    let answer2 = (
-      <div className="card w-75"   >
+      <div className="card"   >
          <div className="card-body">
          <h5 className="card-title">Answer to {quester}'s question</h5>
             <p className="card-text">Q: {questionText}</p>
@@ -55,14 +55,14 @@ function Answers() {
    return (
       <div className="container">
          <h1>Responses</h1>
-         {/* <div className="scroll"> */}
+         <div className="container border border-primary p-3 mb-5">
             <ul>
                {data.map((ans) => <Answer 
                key={ans.answerId} 
                answerText={ans.answerText} 
                questionId={ans.questionId} />)}
             </ul>
-         {/* </div> */}
+         </div>
       </div>
    );
 }

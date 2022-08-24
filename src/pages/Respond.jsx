@@ -78,7 +78,8 @@ class Respond extends React.Component {
       return (
          <div className='container'>
             <div>
-               <form onSubmit={this.handleSubmit}>
+               <h1>Respond</h1>
+               <form onSubmit={this.handleSubmit} className="border border-primary p-3">
                   <div className="mb-3">
                   <label className="form-label" htmlFor="questionId">Question Id</label>
                   <input 
@@ -103,11 +104,11 @@ class Respond extends React.Component {
                      />
                   </div>
                   <button className="btn btn-primary mb-2" type="submit">Reply</button> 
+                  <div className="alert alert-info">{this.state._message ? <p>{this.state._message}</p> : null}</div>
                </form>
-               <div className="alert alert-info">{this.state._message ? <p>{this.state._message}</p> : null}</div>
             </div>
             <div className="questionsList">
-               <table className="table table-info table-striped">
+               <table className="table table-info table-striped m-2">
                   <thead>
                      <tr>
                         <th scope="col">Question Id</th>

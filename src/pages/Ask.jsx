@@ -36,7 +36,9 @@ function Ask() {
 
   return (
     <div className='container'>
-      <form onSubmit={handleSubmit}>
+      {/* form caption */}
+      <h1>Ask a question</h1>
+      <form onSubmit={handleSubmit} className="border border-primary p-5">
         <div className='mb-3'>
           <label htmlFor='questionText'>Question</label>
           <textarea
@@ -60,8 +62,7 @@ function Ask() {
             onChange={(e) => setQuester(e.target.value)}
           />
         </div>
-        <br />
-        <button type="submit" className='btn btn-primary'>Ask</button>
+        <button type="submit" className='btn btn-primary mb-2'>Ask</button>
         <div className="alert alert-info">{message ? <p>{message}</p> : null}</div>
       </form>
     </div>

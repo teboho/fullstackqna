@@ -23,13 +23,13 @@ function Admin() {
   return (
     <div className="container">
       <h1>Admin</h1>
-      <form onSubmit={login}>
+      <form onSubmit={login} className="border border-primary p-5">
          <div className="mb-3">
             <label className="form-label" htmlFor="pass">Passcode</label>
             <input type="text" className="form-control" id="pass" name="pass" value={pass} onChange={(e) => setPass(e.target.value)} />
          </div>
          <button className="btn btn-primary mb-2" type="submit">Login</button>
-         <div className="alert alert-danger" id="error"></div>
+         <div className="alert alert-info" id="error"></div>
       </form>
     </div>
   );
