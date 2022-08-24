@@ -27,7 +27,7 @@ function Answer(props) {
    </div>);
 
    let answer2 = (
-      <div className="card"   >
+      <div className="card mb-3"   >
          <div className="card-body">
          <h5 className="card-title">Answer to {quester}'s question</h5>
             <p className="card-text">Q: {questionText}</p>
