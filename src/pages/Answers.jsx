@@ -48,8 +48,14 @@ function Answers() {
       })
    }, []);
 
-   if (!data) return <h2>Checking if he's answered any questions...</h2>;
-
+   if (!data) return (
+      <div className="container text-primary" role="status">
+         <h2 className="">Checking if he's answered any questions...
+         <br />
+         <small class="text-muted">It could be that the internet is slow: give it 20-is seconds</small>
+         </h2>
+      </div>
+   );
 
    // prepare the element to render
    return (

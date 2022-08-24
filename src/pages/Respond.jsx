@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 const baseUrl = "https://sulfuricqna.azurewebsites.net";
 
@@ -107,7 +107,7 @@ class Respond extends React.Component {
                   <div className="alert alert-info">{this.state._message ? <p>{this.state._message}</p> : null}</div>
                </form>
             </div>
-            <div className="questionsList">
+            <div className="table-responsive">
                <table className="table table-info table-striped m-2">
                   <thead>
                      <tr>
