@@ -22,9 +22,9 @@ class Admin extends React.Component {
          body: JSON.stringify({pass: this.state.pass})
       })
       .then((res) => { 
-         // click again to handle prefetching
-         document.getElementById("login").click();
          if (res.status === 200) { 
+                     // click again to handle prefetching
+            // document.getElementById("login").click();
             let json = res.json();
             json.then((data) => this.setState(state => ({body: data})))
          } 
