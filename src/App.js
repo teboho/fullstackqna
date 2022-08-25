@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './styles/App.css';
 import './styles/Answers.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -18,7 +17,7 @@ function App() {
           <Route path="/Ask" element={<Ask />} />
           <Route path="/Answers" element={<Answers />} />
           <Route path="/Admin" element={<Admin />} />
-          <Route path="/Respond" element={<Respond />} />
+          <Route path="/RespondGuarded" element={<Respond />} />
         </Route>
       </Routes>
     </BrowserRouter>

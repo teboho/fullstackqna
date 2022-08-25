@@ -10,7 +10,7 @@ function Ask() {
     e.preventDefault();
     try {
         // The function to handle the submit action
-      let res = await fetch("https://sulfuricqna.azurewebsites.net/api/Questions",{
+      let res = await fetch("https://sulfuricqna.azurewebsites.net/api/Questions", {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
