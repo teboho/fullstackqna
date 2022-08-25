@@ -18,10 +18,12 @@ class Admin extends React.Component {
 
       fetch(azureFunctionUrl, {
          method: 'POST',
-         headers: {'Content-Type': 'application/json'},
+         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
          body: JSON.stringify({pass: this.state.pass})
       })
       .then((res) => { 
+         // click again to handle prefetching
+         document.getElementById("login").click();
          if (res.status === 200) { 
             let json = res.json();
             json.then((data) => this.setState(state => ({body: data})))
@@ -29,7 +31,7 @@ class Admin extends React.Component {
          else if (res.status === 400) {
             document.getElementById("error").innerHTML = "";
             setTimeout(() => {
-               // setPass("");
+
                document.getElementById("error").innerHTML = "Incorrect Pass | You are probably not authorised to be on this part of the site";
             }, 250);
          }
@@ -42,7 +44,7 @@ class Admin extends React.Component {
       } else {
          document.getElementById("error").innerHTML = "";
          setTimeout(() => {
-            // setPass("");
+            // 
             document.getElementById("error").innerHTML = "Incorrect Pass | You are probably not authorised to be on this part of the site";
          }, 250);
       }     
@@ -57,7 +59,7 @@ class Admin extends React.Component {
                   <label className="form-label" htmlFor="pass">Passcode</label>
                   <input type="text" className="form-control" id="pass" name="pass" value={this.state.pass} onChange={(e) => this.setState({pass : e.target.value })} />
                </div>
-               <button className="btn btn-primary mb-2" type="submit">Login</button>
+               <button className="btn btn-primary mb-2" type="submit" id="login">Login</button>
                <div className="alert alert-info" id="error"></div>
             </form>
          </div>
