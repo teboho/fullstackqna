@@ -17,7 +17,9 @@ function Ask() {
         },
         body: JSON.stringify({
           questionText: questionText,
-          quester: quester
+          quester: quester,
+          // questionAnswered: false, // this is handled at the server side
+          // createdDate: new Date().toISOString() // this is handled at the server side
         })
       });
       // Get the resposnse?

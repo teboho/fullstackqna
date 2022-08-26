@@ -9,7 +9,13 @@ class Question extends React.Component {
 
    render () {
       return (
-         <tr><td>{this.props.questionId}</td><td>{this.props.quester}</td><td>{this.props.questionText}</td></tr>
+         <tr>
+            <td>{this.props.questionId}</td>
+            <td>{this.props.quester}</td>
+            <td>{this.props.questionText}</td>
+            <td>{new Date(this.props.createdDate).toLocaleString()}</td>
+            <td>{this.props.questionAnswered ? "Yes" : "No"}</td>   
+         </tr>
       );
    }
 }
@@ -22,15 +28,15 @@ class Respond extends React.Component {
       this.state = { 
          questions : [],
          _questionId: 0,
-         _answerText: ""
+         _answerText: "",
+         question: null
       };
    }
 
    componentDidMount() {
       fetch(baseUrl + '/api/Questions')
-         .then((response) => response.json())
+         .then((res) => res.json()) // get the response and convert to json
          .then((data) => {
-            console.log(data);
             // the data is an array of objects
             this.setState(state => ({questions: data})); 
          })
@@ -38,11 +44,11 @@ class Respond extends React.Component {
    }
 
    async handleSubmit(e) {
-      console.log("handleSubmit");
       e.preventDefault();
       
       try {
-         let res = await fetch(baseUrl + '/api/Answers', {
+         // POST the answer to the server
+         fetch(baseUrl + '/api/Answers', {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json'
@@ -51,30 +57,42 @@ class Respond extends React.Component {
                questionId: this.state._questionId,
                answerText: this.state._answerText
             })
-         });
-   
-         let resJson = await res.json();
-         console.log(resJson);
+         })
+         .then((res) => res.json())
+         .then((data) => {
+            this.setState(state => ({_message: "Answer posted."}));
+         }).catch((reason) => console.error(reason));
 
-         if (res.status >= 200 && res.status < 300) {
-            this.setState(state => ({
-               _questionId: 0,
-               _answerText: "",
-               _message: "Answer Sent :)"
-            }));
-         } else {
-            this.setState(state => ({
-               _message: "Sth happend."
-            }));
-         }
+         // Update the question to show that it has been answered by first getting the question
+         fetch(baseUrl + '/api/Questions/' + this.state._questionId)
+         .then((res) => res.json())
+         .then((data) => {
+            // Up the question in the state
+            console.log(data);
+            data.questionAnswered = true;
+            // PPUT the object
+            fetch(baseUrl + '/api/Questions/' + data.questionId, {
+               method: 'PUT',
+               headers: {
+                  'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(data)
+            })
+            .then((res) => {
+               console.log("PUT", res);
+               this.setState(state => ({_message: 'Question updated'}));
+            })
+            .catch(err => console.error(err));
+            
+         })
+         .catch(err => console.error(err));
+
       } catch (error) {
          console.error(error);
       }
    }
 
    render() {
-      console.log(this.state.questions);
-
       return (
          <div className='container'>
             <div>
@@ -114,10 +132,12 @@ class Respond extends React.Component {
                         <th scope="col">Question Id</th>
                         <th scope="col">Quester</th>
                         <th scope="col">Question</th>
+                        <th scope="col">Date Posted</th>
+                        <th scope="col">Answered</th>
                      </tr>
                   </thead> 
                   <tbody>
-                     {this.state.questions.map((q) => <Question key={q.questionId} quester={q.quester} questionId={q.questionId} questionText={q.questionText}/>)}
+                     {this.state.questions.map((q) => <Question key={q.questionId} quester={q.quester} questionId={q.questionId} questionText={q.questionText} questionAnswered={q.questionAnswered} createdDate={q.createdDate}/>)}
                   </tbody>
                </table>
             </div>

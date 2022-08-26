@@ -11,7 +11,7 @@ function Answer(props) {
    // use question Id to get Question   
    React.useEffect(() => {
       let questionId = props.questionId;
-      console.log("QID", questionId);
+      // console.log("QID", questionId);
       axios.get(baseUrl + "/Questions/" + questionId).then((res) => {
          setQuestionText(res.data.questionText);
          setQuester(res.data.quester);
