@@ -1,6 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 
 const baseUrl = "https://sulfuricqna.azurewebsites.net";
+
+class Delete extends React.Component {
+   constructor(props) {
+      super(props);
+      this.handleDelete = this.handleDelete.bind(this);
+   }
+
+   handleDelete(e) {
+      e.preventDefault();
+
+      const url = baseUrl + '/api/questions/' + this.props._id;
+      fetch(url, {
+         method: 'DELETE'
+      })
+      .then((res) => {
+         console.log(res);
+         document.getElementById('deletebtn').style = 'display: none';
+         document.getElementById('deleteMessage').innerText = "deleted";
+
+         setTimeout(() => {
+            // refresh page
+            window.location.href = "/";
+         }, 300);
+      })
+      .catch(err => console.error(err));
+   }
+
+   render() {
+      return (
+         <React.Fragment>
+            <button id="deletebtn" type="button" className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+            <span className="form-text bg-info" id="deleteMessage"></span>
+         </React.Fragment>
+      );
+   }   
+}
 
 class Question extends React.Component {
    constructor(props) {
@@ -14,7 +50,8 @@ class Question extends React.Component {
             <td>{this.props.quester}</td>
             <td>{this.props.questionText}</td>
             <td>{new Date(this.props.createdDate).toLocaleString()}</td>
-            <td>{this.props.questionAnswered ? "Yes" : "No"}</td>   
+            <td>{this.props.questionAnswered ? "Yes" : "No"}</td>
+            <td><Delete _id={this.props.questionId} /></td>   
          </tr>
       );
    }
@@ -134,6 +171,7 @@ class Respond extends React.Component {
                         <th scope="col">Question</th>
                         <th scope="col">Date Posted</th>
                         <th scope="col">Answered</th>
+                        <th scope="col">Delete?</th>
                      </tr>
                   </thead> 
                   <tbody>
