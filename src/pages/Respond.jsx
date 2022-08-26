@@ -136,7 +136,7 @@ class Respond extends React.Component {
       return (
          <div className='container'>
             <div>
-               <h1>Respond</h1>
+               <h1 className="text-primary">Respond</h1>
                {/* border border-primary  */}
                <form onSubmit={this.handleSubmit} className="shadow p-3 bg-white rounded">
                   <div className="mb-3">
