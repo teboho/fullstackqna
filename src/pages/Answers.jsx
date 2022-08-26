@@ -27,7 +27,7 @@ function Answer(props) {
    </div>);
 
    let answer2 = (
-      <div className="card mb-3"   >
+      <div className="card shadow p-3 mb-3 bg-white rounded"   >
          <div className="card-body">
          <h5 className="card-title">Answer to {quester}'s question</h5>
             <p className="card-text">Q: {questionText}</p>
@@ -61,7 +61,8 @@ function Answers() {
    return (
       <div className="container">
          <h1>Responses</h1>
-         <div className="container border border-primary p-3 mb-5">
+         {/* border border-primary */}
+         <div className="container p-3 mb-5">
             <ul>
                {data.map((ans) => <Answer 
                key={ans.answerId} 

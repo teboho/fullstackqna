@@ -137,7 +137,8 @@ class Respond extends React.Component {
          <div className='container'>
             <div>
                <h1>Respond</h1>
-               <form onSubmit={this.handleSubmit} className="border border-primary p-3">
+               {/* border border-primary  */}
+               <form onSubmit={this.handleSubmit} className="shadow p-3 bg-white rounded">
                   <div className="mb-3">
                   <label className="form-label" htmlFor="questionId">Question Id</label>
                   <input 

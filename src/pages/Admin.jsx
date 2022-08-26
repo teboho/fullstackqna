@@ -54,7 +54,8 @@ class Admin extends React.Component {
       return (
          <div className="container">
             <h1>Admin</h1>
-            <form onSubmit={this.login} className="border border-primary p-5">
+            {/*  */}
+            <form onSubmit={this.login} className=" shadow p-3 mb-5 bg-white rounded">
                <div className="mb-3">
                   <label className="form-label" htmlFor="pass">Passcode</label>
                   <input type="text" className="form-control" id="pass" name="pass" value={this.state.pass} onChange={(e) => this.setState({pass : e.target.value })} />

@@ -39,8 +39,9 @@ function Ask() {
   return (
     <div className='container'>
       {/* form caption */}
-      <h1>Ask a question</h1>
-      <form onSubmit={handleSubmit} className="border border-primary p-5">
+      <h1 className='title'>Ask away</h1>
+      {/* border border-primary */}
+      <form onSubmit={handleSubmit} className="shadow p-3 mb-5 bg-white rounded"> 
         <div className='mb-3'>
           <label htmlFor='questionText'>Question</label>
           <textarea
