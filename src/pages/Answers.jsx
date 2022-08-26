@@ -60,7 +60,7 @@ function Answers() {
    // prepare the element to render
    return (
       <div className="container">
-         <h1>Responses</h1>
+         <h1 className="text-primary">Responses</h1>
          {/* border border-primary */}
          <div className="container p-3 mb-5">
             <ul>

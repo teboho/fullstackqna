@@ -39,7 +39,7 @@ function Ask() {
   return (
     <div className='container'>
       {/* form caption */}
-      <h1 className='title'>Ask away</h1>
+      <h1 className='text-primary'>Ask away</h1>
       {/* border border-primary */}
       <form onSubmit={handleSubmit} className="shadow p-3 mb-5 bg-white rounded"> 
         <div className='mb-3'>

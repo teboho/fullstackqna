@@ -53,7 +53,7 @@ class Admin extends React.Component {
    render() {
       return (
          <div className="container">
-            <h1>Admin</h1>
+            <h1 className="text-primary">Admin</h1>
             {/*  */}
             <form onSubmit={this.login} className=" shadow p-3 mb-5 bg-white rounded">
                <div className="mb-3">
