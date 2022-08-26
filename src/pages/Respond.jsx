@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const baseUrl = "https://sulfuricqna.azurewebsites.net";
 
@@ -17,7 +17,7 @@ class Delete extends React.Component {
       })
       .then((res) => {
          console.log(res);
-         document.getElementById('deletebtn').style = 'display: none';
+         document.getElementById('deleteBtn').style = 'display: none';
          document.getElementById('deleteMessage').innerText = "deleted";
 
          setTimeout(() => {
@@ -25,13 +25,15 @@ class Delete extends React.Component {
             window.location.href = "/";
          }, 300);
       })
-      .catch(err => console.error(err));
+      .catch(err =>  {
+         console.error(err);
+         document.getElementById('deleteMessage').innerText = "error | This question already has an answer :(";});
    }
 
    render() {
       return (
          <React.Fragment>
-            <button id="deletebtn" type="button" className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+            <button id="deleteBtn" type="button" className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
             <span className="form-text bg-info" id="deleteMessage"></span>
          </React.Fragment>
       );
@@ -39,9 +41,10 @@ class Delete extends React.Component {
 }
 
 class Question extends React.Component {
-   constructor(props) {
-      super(props);
-   }
+   // The constructor is not needed for this component
+   //  constructor(props) {
+   //    super(props);
+   // }
 
    render () {
       return (
