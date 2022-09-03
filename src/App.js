@@ -17,7 +17,7 @@ function App() {
           <Route path="/Ask" element={<Ask />} />
           <Route path="/Answers" element={<Answers />} />
           <Route path="/Admin" element={<Admin />} />
-          <Route path="/RespondGuarded" element={<Respond />} />
+          {/* <Route path="/RespondGuarded" element={<Respond />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

@@ -136,58 +136,66 @@ class Respond extends React.Component {
    }
 
    render() {
-      return (
-         <div className='container'>
-            <div>
-               <h1 className="text-primary">Respond</h1>
-               {/* border border-primary  */}
-               <form onSubmit={this.handleSubmit} className="shadow p-3 bg-white rounded">
-                  <div className="mb-3">
-                  <label className="form-label" htmlFor="questionId">Question Id</label>
-                  <input 
-                     type="number"
-                     className="form-control" 
-                     name="questionId"
-                     id="questionId" 
-                     value={this.state._questionId}
-                     onChange={(e) => this.setState({_questionId: e.target.value})}
-                  />
-                  </div>                  
-                  <div className="mb-3">
-                     <label className="form-label" htmlFor="answerText">Response</label>
-                     <textarea 
-                        type="text"
-                        className="form-control"
-                        id="answerText"
-                        name="answerText"
-                        value={this.state._answerText}
-                        onChange={(e) => this.setState({_answerText: e.target.value})}
-                        placeholder="Response"
+      if (this.props.authorised) {
+         return (
+            <div className='container'>
+               <div>
+                  <h1 className="text-primary">Respond</h1>
+                  {/* border border-primary  */}
+                  <form onSubmit={this.handleSubmit} className="shadow p-3 bg-white rounded">
+                     <div className="mb-3">
+                     <label className="form-label" htmlFor="questionId">Question Id</label>
+                     <input 
+                        type="number"
+                        className="form-control" 
+                        name="questionId"
+                        id="questionId" 
+                        value={this.state._questionId}
+                        onChange={(e) => this.setState({_questionId: e.target.value})}
                      />
-                  </div>
-                  <button className="btn btn-primary mb-2" type="submit">Reply</button> 
-                  <div className="alert alert-info" style={{"display":"none"}}>{this.state._message ? <p>{this.state._message}</p> : null}</div>
-               </form>
+                     </div>                  
+                     <div className="mb-3">
+                        <label className="form-label" htmlFor="answerText">Response</label>
+                        <textarea 
+                           type="text"
+                           className="form-control"
+                           id="answerText"
+                           name="answerText"
+                           value={this.state._answerText}
+                           onChange={(e) => this.setState({_answerText: e.target.value})}
+                           placeholder="Response"
+                        />
+                     </div>
+                     <button className="btn btn-primary mb-2" type="submit">Reply</button> 
+                     <div className="alert alert-info" style={{"display":"none"}}>{this.state._message ? <p>{this.state._message}</p> : null}</div>
+                  </form>
+               </div>
+               <div className="table-responsive">
+                  <table className="table table-info table-striped m-2">
+                     <thead>
+                        <tr>
+                           <th scope="col">Question Id</th>
+                           <th scope="col">Quester</th>
+                           <th scope="col">Question</th>
+                           <th scope="col">Date Posted</th>
+                           <th scope="col">Answered</th>
+                           <th scope="col">Delete?</th>
+                        </tr>
+                     </thead> 
+                     <tbody>
+                        {this.state.questions.map((q) => <Question key={q.questionId} quester={q.quester} questionId={q.questionId} questionText={q.questionText} questionAnswered={q.questionAnswered} createdDate={q.createdDate}/>)}
+                     </tbody>
+                  </table>
+               </div>
             </div>
-            <div className="table-responsive">
-               <table className="table table-info table-striped m-2">
-                  <thead>
-                     <tr>
-                        <th scope="col">Question Id</th>
-                        <th scope="col">Quester</th>
-                        <th scope="col">Question</th>
-                        <th scope="col">Date Posted</th>
-                        <th scope="col">Answered</th>
-                        <th scope="col">Delete?</th>
-                     </tr>
-                  </thead> 
-                  <tbody>
-                     {this.state.questions.map((q) => <Question key={q.questionId} quester={q.quester} questionId={q.questionId} questionText={q.questionText} questionAnswered={q.questionAnswered} createdDate={q.createdDate}/>)}
-                  </tbody>
-               </table>
+         );
+      } else {
+         return (
+            <div className="container">
+               <h1 className="text-danger">You are not authorised to view this page.</h1>
             </div>
-         </div>
-      );
+         );
+      }
    }
 }
 
