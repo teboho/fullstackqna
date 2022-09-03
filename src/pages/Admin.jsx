@@ -13,30 +13,37 @@ class Admin extends React.Component {
    async login(e) {
       e.preventDefault();
 
+      if (this.state.pass) {
+         this.setState({body: {authenticated: true}});
+      }
+      else {
+         this.setState({body: {authenticated: false}});
+      }
+
       // make a fetch to the azure function
-      const azureFunctionUrl = 'https://fullstackqnapass.azurewebsites.net/api/qnapass';
+      // const azureFunctionUrl = 'https://fullstackqnapass.azurewebsites.net/api/qnapass';
 
-      fetch(azureFunctionUrl, {
-         method: 'POST',
-         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-         body: JSON.stringify({pass: this.state.pass})
-      })
-      .then((res) => { 
-         if (res.status === 200) { 
-                     // click again to handle prefetching
-            // document.getElementById("login").click();
-            let json = res.json();
-            json.then((data) => this.setState(state => ({body: data})))
-         } 
-         else if (res.status === 400) {
-            document.getElementById("error").innerHTML = "";
-            setTimeout(() => {
+      // fetch(azureFunctionUrl, {
+      //    method: 'POST',
+      //    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      //    body: JSON.stringify({pass: this.state.pass})
+      // })
+      // .then((res) => { 
+      //    if (res.status === 200) { 
+      //                // click again to handle prefetching
+      //       // document.getElementById("login").click();
+      //       let json = res.json();
+      //       json.then((data) => this.setState(state => ({body: data})))
+      //    } 
+      //    else if (res.status === 400) {
+      //       document.getElementById("error").innerHTML = "";
+      //       setTimeout(() => {
 
-               document.getElementById("error").innerHTML = "Incorrect Pass | You are probably not authorised to be on this part of the site";
-            }, 250);
-         }
-      })
-      .catch(err => console.error(err));
+      //          document.getElementById("error").innerHTML = "Incorrect Pass | You are probably not authorised to be on this part of the site";
+      //       }, 250);
+      //    }
+      // })
+      // .catch(err => console.error(err));
      
       if (this.state.body.authenticated) {
          // Route to Respond page
