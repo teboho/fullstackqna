@@ -13,7 +13,7 @@ class Admin extends React.Component {
    async login(e) {
       e.preventDefault();
 
-      if (this.state.pass) {
+      if (this.state.pass.equals("ladiesman217")) {
          this.setState({body: {authenticated: true}});
       }
       else {
