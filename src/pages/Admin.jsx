@@ -36,8 +36,6 @@ class Admin extends React.Component {
             }
          })
          .catch((reason) => console.error(reason));
-
-         // console.log(this.state.renderResponse);
       } catch (err) {
          console.log(err);
       }
