@@ -130,6 +130,9 @@ class Respond extends React.Component {
       } catch (error) {
          console.error(error);
       }
+
+      // update the status
+      document.getElementById("error").style.display = "display";
    }
 
    render() {
@@ -163,7 +166,7 @@ class Respond extends React.Component {
                      />
                   </div>
                   <button className="btn btn-primary mb-2" type="submit">Reply</button> 
-                  <div className="alert alert-info">{this.state._message ? <p>{this.state._message}</p> : null}</div>
+                  <div className="alert alert-info" style={{"display":"none"}}>{this.state._message ? <p>{this.state._message}</p> : null}</div>
                </form>
             </div>
             <div className="table-responsive">

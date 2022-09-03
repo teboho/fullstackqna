@@ -23,7 +23,7 @@ function Ask() {
         })
       });
       // Get the resposnse?
-        let resJson = await res.json();
+        await res.json();
         if (res.status >= 200 && res.status < 300) {
           setQuestionText("");
           setQuester("");
@@ -66,7 +66,7 @@ function Ask() {
           />
         </div>
         <button type="submit" className='btn btn-primary mb-2'>Ask</button>
-        <div className="alert alert-info">{message ? <p>{message}</p> : null}</div>
+        <div id="status" className="alert alert-info">{message ? <p>{message}</p> : null}</div>
       </form>
     </div>
   );
