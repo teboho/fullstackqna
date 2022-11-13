@@ -37,11 +37,11 @@ function Ask() {
   };
 
   return (
-    <div className='container'>
+    <div className='container flex'>
       {/* form caption */}
-      <h1 className='text-primary'>Ask away</h1>
+      <h1 className='display-1 text-primary'>Ask away</h1>
       {/* border border-primary */}
-      <form onSubmit={handleSubmit} className="shadow p-3 mb-5 bg-white rounded"> 
+      <form onSubmit={handleSubmit} className="w-100 shadow p-3 mb-5 bg-white rounded"> 
         <div className='mb-3'>
           <label htmlFor='questionText'>Question</label>
           <textarea
@@ -49,7 +49,7 @@ function Ask() {
             id='questionText'
             className="form-control"
             value={questionText}
-            placeholder="Question?"
+            placeholder="Enter the question here ..."
             onChange={(e) => setQuestionText(e.target.value)}
           />
           {/* <div id="questionHelp" class="form-text">Well, you have to type something..</div> */}
@@ -61,12 +61,17 @@ function Ask() {
             id='quester'
             className="form-control"
             value={quester}
-            placeholder="Who's asking?"
+            placeholder="Who's asking the question?"
             onChange={(e) => setQuester(e.target.value)}
           />
         </div>
-        <button type="submit" className='btn btn-primary mb-2'>Ask</button>
-        <div id="status" className="alert alert-info">{message ? <p>{message}</p> : null}</div>
+        <button type="submit" className='btn btn-primary mb-3'>Ask</button>
+        { message 
+          ? 
+          <div id="status" className="alert alert-info p-2">{message}</div>
+          :
+          null
+        }
       </form>
     </div>
   );

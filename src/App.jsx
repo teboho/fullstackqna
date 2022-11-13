@@ -5,7 +5,7 @@ import Layout from './pages/Layout';
 import Ask from './pages/Ask';
 import Answers from './pages/Answers';
 import Admin from './pages/Admin';
-
+import Error from './pages/Error'
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <Route path="/Answers" element={<Answers />} />
           <Route path="/Admin" element={<Admin />} />
         </Route>
+        <Route path='*' element={<Error />} />
       </Routes>
     </BrowserRouter>
   );

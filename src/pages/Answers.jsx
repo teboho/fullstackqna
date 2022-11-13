@@ -1,4 +1,3 @@
-
 import React, {useEffect, useState} from "react";
 const axios = require('axios').default;
 const baseUrl = "https://sulfuricqna.azurewebsites.net/api";
@@ -30,7 +29,7 @@ function Answer(props) {
       <div className="card shadow p-3 mb-3 bg-white rounded"   >
          <div className="card-body">
          <h5 className="card-title">Answer to {quester}'s question</h5>
-            <p className="card-text">Q: {questionText}</p>
+            <p className="card-text text-center">Q: {questionText}</p>
             <p className="card-text">A: {props.answerText}</p>
          </div>
       </div>
@@ -60,7 +59,7 @@ function Answers() {
    // prepare the element to render
    return (
       <div className="container">
-         <h1 className="text-primary">Responses</h1>
+         <h1 className="display-1 text-primary">Responses</h1>
          {/* border border-primary */}
          <div className="container p-3 mb-5">
             <ul>
