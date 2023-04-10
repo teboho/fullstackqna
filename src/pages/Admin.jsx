@@ -1,7 +1,7 @@
 import React from "react";
 import Respond from "./Respond";
 
-const baseUrl = "https://sulfuricqna.azurewebsites.net";
+const baseUrl = "https://fullstackqna-api.azurewebsites.net";
 
 class Admin extends React.Component {
    constructor(props) {
@@ -27,7 +27,8 @@ class Admin extends React.Component {
          .then((data) => {
             if(data.authorised) {
                // window.location.href = "/RespondGuarded";
-               this.state.renderResponse = data.authorised;
+               this.setState({renderResponse: data.authorised});
+               // this.state.renderResponse = data.authorised;
                this.forceUpdate();
             }
             else {

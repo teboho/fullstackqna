@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 const axios = require('axios').default;
-const baseUrl = "https://sulfuricqna.azurewebsites.net/api";
+const baseUrl = "https://fullstackqna-api.azurewebsites.net/api";
 
 function Answer(props) {
    // const pprops = JSON.
