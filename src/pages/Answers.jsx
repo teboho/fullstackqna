@@ -53,6 +53,9 @@ function Answers() {
          <br />
          <small className="text-muted">It could be that the internet is slow: give it 20-ish seconds</small>
          </h2>
+         <br />
+         <br />
+         <br />
          {/* Make a changing 20 second coundown box, centered horizontally in the page */}
          <div id="loading" className="d-flex justify-content-center">
             <div className="spinner-border text-primary" role="status">
