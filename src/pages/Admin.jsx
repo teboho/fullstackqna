@@ -26,9 +26,7 @@ class Admin extends React.Component {
          .then((res) => res.json())
          .then((data) => {
             if(data.authorised) {
-               // window.location.href = "/RespondGuarded";
                this.setState({renderResponse: data.authorised});
-               // this.state.renderResponse = data.authorised;
                this.forceUpdate();
             }
             else {
