@@ -27,7 +27,8 @@ class Delete extends React.Component {
       })
       .catch(err =>  {
          console.error(err);
-         document.getElementById('deleteMessage').innerText = "error | This question already has an answer :(";});
+         document.getElementById('deleteMessage').innerText = "error | This question already has an answer :(";
+      });
    }
 
    render() {
@@ -180,7 +181,9 @@ class Respond extends React.Component {
                         </tr>
                      </thead> 
                      <tbody>
-                        {this.state.questions.map((q) => <Question key={q.questionId} quester={q.quester} questionId={q.questionId} questionText={q.questionText} questionAnswered={q.questionAnswered} createdDate={q.createdDate}/>)}
+                        {this.state.questions.map((q) => 
+                        <Question key={q.questionId} quester={q.quester} 
+                        questionId={q.questionId} questionText={q.questionText} questionAnswered={q.questionAnswered} createdDate={q.createdDate}/>)}
                      </tbody>
                   </table>
                </div>
