@@ -7,7 +7,7 @@ const Layout = () => {
       <>
          <Navbar />
          <Outlet />
-         <footer className="fixed-bottom bg-light text-center">
+         <footer className="lead fixed-bottom bg-light text-center">
             FullStack QnA &copy; {new Date().getFullYear()}
          </footer>
       </>
