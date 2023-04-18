@@ -1,6 +1,6 @@
 import React from "react";
 
-const baseUrl = "https://sulfuricqna.azurewebsites.net";
+const baseUrl = "https://fullstackqna-api.azurewebsites.net";
 
 class Delete extends React.Component {
    constructor(props) {
