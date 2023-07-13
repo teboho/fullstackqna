@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const baseUrl = "https://fullstackqna-api.azurewebsites.net/api";
-const baseUrl2 = "https://fullstackqnaapi20230713165053.azurewebsites.net/";
+const baseUrl = "https://fullstackqna-api.azurewebsites.net";
+const baseUrl2 = "https://fsqna-api-aehqdzfua9g5exew.z01.azurefd.net";
 
 function Ask() {
   // Declare the states needed to store the input values, and functions to update those values| questionText, quester
