@@ -1,7 +1,7 @@
 import React from "react";
 
 const baseUrl = "https://fullstackqna-api.azurewebsites.net/api";
-const baseUrl2 = "https://fullstackqnaapi20230713165053.azurewebsites.net/";
+const baseUrl2 = "https://fullstackqnaapi20230713165053.azurewebsites.net/api";
 
 class Delete extends React.Component {
    constructor(props) {
@@ -9,27 +9,26 @@ class Delete extends React.Component {
       this.handleDelete = this.handleDelete.bind(this);
    }
 
-   handleDelete(e) {
+   async handleDelete(e) {
       e.preventDefault();
 
-      const url = baseUrl + '/api/questions/' + this.props._id;
-      fetch(url, {
+      const url = baseUrl2 + '/questions/' + this.props._id;
+      await fetch(url, {
          method: 'DELETE'
-      })
-      .then((res) => {
-         console.log(res);
-         document.getElementById('deleteBtn').style = 'display: none';
-         document.getElementById('deleteMessage').innerText = "deleted";
-
-         setTimeout(() => {
-            // refresh page
-            window.location.href = "/";
-         }, 300);
-      })
-      .catch(err =>  {
-         console.error(err);
-         document.getElementById('deleteMessage').innerText = "error | This question already has an answer :(";
       });
+
+      document.getElementById('deleteBtn').style = 'display: none';
+      document.getElementById('deleteMessage').innerText = "deleted";
+      // .then((res) => res.json())
+      // .then((res) => {
+      //    console.log(res);
+      //    document.getElementById('deleteBtn').style = 'display: none';
+      //    document.getElementById('deleteMessage').innerText = "deleted";
+      // })
+      // .catch(err =>  {
+      //    console.error(err);
+      //    document.getElementById('deleteMessage').innerText = "error";
+      // });
    }
 
    render() {
@@ -76,7 +75,7 @@ class Respond extends React.Component {
    }
 
    componentDidMount() {
-      fetch(baseUrl + '/api/Questions')
+      fetch(baseUrl2 + '/Questions')
          .then((res) => res.json()) // get the response and convert to json
          .then((data) => {
             // the data is an array of objects
@@ -90,7 +89,7 @@ class Respond extends React.Component {
       
       try {
          // POST the answer to the server
-         fetch(baseUrl + '/api/Answers', {
+         fetch(baseUrl2 + '/Answers', {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json'
@@ -106,14 +105,14 @@ class Respond extends React.Component {
          }).catch((reason) => console.error(reason));
 
          // Update the question to show that it has been answered by first getting the question
-         fetch(baseUrl + '/api/Questions/' + this.state._questionId)
+         fetch(baseUrl2 + '/Questions/' + this.state._questionId)
          .then((res) => res.json())
          .then((data) => {
             // Up the question in the state
             console.log(data);
             data.questionAnswered = true;
             // PPUT the object
-            fetch(baseUrl + '/api/Questions/' + data.questionId, {
+            fetch(baseUrl2 + '/Questions/' + data.questionId, {
                method: 'PUT',
                headers: {
                   'Content-Type': 'application/json'

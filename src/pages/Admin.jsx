@@ -1,8 +1,8 @@
 import React from "react";
 import Respond from "./Respond";
 
-const baseUrl = "https://fullstackqna-api.azurewebsites.net";
-const baseUrl2 = "https://fsqna-api-aehqdzfua9g5exew.z01.azurefd.net";
+const baseUrl = "https://fullstackqna-api.azurewebsites.net/api";
+const baseUrl2 = "https://fsqna-api-aehqdzfua9g5exew.z01.azurefd.net/api";
 
 class Admin extends React.Component {
    constructor(props) {
@@ -23,7 +23,7 @@ class Admin extends React.Component {
       e.preventDefault();
 
       try{
-         fetch(baseUrl2 + '/api/Auth?pass=' + this.state._pass)
+         fetch(baseUrl2 + '/Auth?pass=' + this.state._pass)
          .then((res) => res.json())
          .then((data) => {
             if(data.authorised) {
