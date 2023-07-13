@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 const axios = require('axios').default;
+
 const baseUrl = "https://fullstackqna-api.azurewebsites.net/api";
+const baseUrl2 = "https://fullstackqnaapi20230713165053.azurewebsites.net/";
 
 function Answer(props) {
    // const pprops = JSON.
@@ -11,7 +13,7 @@ function Answer(props) {
    React.useEffect(() => {
       let questionId = props.questionId;
       // console.log("QID", questionId);
-      axios.get(baseUrl + "/Questions/" + questionId).then((res) => {
+      axios.get(baseUrl2 + "/Questions/" + questionId).then((res) => {
          setQuestionText(res.data.questionText);
          setQuester(res.data.quester);
       })
@@ -42,7 +44,7 @@ function Answers() {
    const [data, setData] = useState(null);
 
    useEffect(() => {
-      axios.get(baseUrl + "/Answers").then((res) => {
+      axios.get(baseUrl2 + "/Answers").then((res) => {
          setData(res.data);
       })
    }, []);

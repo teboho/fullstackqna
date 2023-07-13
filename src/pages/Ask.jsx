@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+const baseUrl = "https://fullstackqna-api.azurewebsites.net/api";
+const baseUrl2 = "https://fullstackqnaapi20230713165053.azurewebsites.net/";
+
 function Ask() {
   // Declare the states needed to store the input values, and functions to update those values| questionText, quester
   const [questionText, setQuestionText] = useState("");
@@ -10,7 +13,7 @@ function Ask() {
     e.preventDefault();
     try {
         // The function to handle the submit action
-      let res = await fetch("https://fullstackqna-api.azurewebsites.net/api/Questions", {
+      let res = await fetch(baseUrl2 + '/api/questions', {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
