@@ -9,33 +9,39 @@ class Delete extends React.Component {
       this.handleDelete = this.handleDelete.bind(this);
    }
 
-   async handleDelete(e) {
+   handleDelete(e) {
       e.preventDefault();
 
       const url = baseUrl2 + '/questions/' + this.props._id;
-      await fetch(url, {
+      fetch(url, {
          method: 'DELETE'
-      });
+      })
+      .then((res) => res.json())
+      .then((res) => {
+         console.log(res);
+         document.getElementById('deleteBtn').style = 'display: none';
+         document.getElementById(this.props._id).innerText = res.result;
+         document.getElementById(this.props._id).className = 'form-text p-3 text-success';
 
-      document.getElementById('deleteBtn').style = 'display: none';
-      document.getElementById('deleteMessage').innerText = "deleted";
-      // .then((res) => res.json())
-      // .then((res) => {
-      //    console.log(res);
-      //    document.getElementById('deleteBtn').style = 'display: none';
-      //    document.getElementById('deleteMessage').innerText = "deleted";
-      // })
-      // .catch(err =>  {
-      //    console.error(err);
-      //    document.getElementById('deleteMessage').innerText = "error";
-      // });
+         // Wait 3 seconds then render the Respond page
+         // setTimeout(() => {
+         //    window.location.reload();
+         // }
+         // , 3000);
+      })
+      .catch(err =>  {
+         console.error(err);
+         document.getElementById('deleteBtn').style = 'display: none';
+         document.getElementById(this.props._id).innerText = "there was an error deleting the question.";
+         document.getElementById(this.props._id).className = 'form-text p-3 text-danger';
+      });
    }
 
    render() {
       return (
          <React.Fragment>
             <button id="deleteBtn" type="button" className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
-            <span className="form-text bg-info" id="deleteMessage"></span>
+            <span id={this.props._id}></span>
          </React.Fragment>
       );
    }   
@@ -111,7 +117,7 @@ class Respond extends React.Component {
             // Up the question in the state
             console.log(data);
             data.questionAnswered = true;
-            // PPUT the object
+            // PUT the object
             fetch(baseUrl2 + '/Questions/' + data.questionId, {
                method: 'PUT',
                headers: {
