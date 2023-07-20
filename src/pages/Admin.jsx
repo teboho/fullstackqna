@@ -23,7 +23,7 @@ class Admin extends React.Component {
       e.preventDefault();
 
       try{
-         fetch(baseUrl2 + '/Auth?pass=' + this.state._pass)
+         fetch(baseUrl + '/Auth?pass=' + this.state._pass)
          .then((res) => res.json())
          .then((data) => {
             if(data.authorised) {

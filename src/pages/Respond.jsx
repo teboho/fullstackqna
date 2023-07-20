@@ -1,7 +1,7 @@
 import React from "react";
 
 const baseUrl = "https://fullstackqna-api.azurewebsites.net/api";
-const baseUrl2 = "https://fullstackqnaapi20230713165053.azurewebsites.net/api";
+// const baseUrl2 = "https://fullstackqnaapi20230713165053.azurewebsites.net/api";
 
 class Delete extends React.Component {
    constructor(props) {
@@ -12,7 +12,7 @@ class Delete extends React.Component {
    handleDelete(e) {
       e.preventDefault();
 
-      const url = baseUrl2 + '/questions/' + this.props._id;
+      const url = baseUrl + '/questions/' + this.props._id;
       fetch(url, {
          method: 'DELETE'
       })
@@ -81,7 +81,7 @@ class Respond extends React.Component {
    }
 
    componentDidMount() {
-      fetch(baseUrl2 + '/Questions')
+      fetch(baseUrl + '/Questions')
          .then((res) => res.json()) // get the response and convert to json
          .then((data) => {
             // the data is an array of objects
@@ -95,7 +95,7 @@ class Respond extends React.Component {
       
       try {
          // POST the answer to the server
-         fetch(baseUrl2 + '/Answers', {
+         fetch(baseUrl + '/Answers', {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json'
@@ -111,14 +111,14 @@ class Respond extends React.Component {
          }).catch((reason) => console.error(reason));
 
          // Update the question to show that it has been answered by first getting the question
-         fetch(baseUrl2 + '/Questions/' + this.state._questionId)
+         fetch(baseUrl + '/Questions/' + this.state._questionId)
          .then((res) => res.json())
          .then((data) => {
             // Up the question in the state
             console.log(data);
             data.questionAnswered = true;
             // PUT the object
-            fetch(baseUrl2 + '/Questions/' + data.questionId, {
+            fetch(baseUrl + '/Questions/' + data.questionId, {
                method: 'PUT',
                headers: {
                   'Content-Type': 'application/json'

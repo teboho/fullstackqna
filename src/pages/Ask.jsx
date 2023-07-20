@@ -13,7 +13,7 @@ function Ask() {
     e.preventDefault();
     try {
         // The function to handle the submit action
-      let res = await fetch(baseUrl2 + '/questions', {
+      let res = await fetch(baseUrl + '/questions', {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',

@@ -11,7 +11,7 @@ function Answer(props) {
 
    React.useEffect(() => {
       let questionId = props.questionId;
-      axios.get(baseUrl2 + "/Questions/" + questionId).then((res) => {
+      axios.get(baseUrl + "/Questions/" + questionId).then((res) => {
          setQuestionText(res.data.questionText);
          setQuester(res.data.quester);
       })
@@ -41,7 +41,7 @@ function Answers() {
    const [data, setData] = useState(null);
 
    useEffect(() => {
-      axios.get(baseUrl2 + "/Answers").then((res) => {
+      axios.get(baseUrl + "/Answers").then((res) => {
          setData(res.data);
       })
    }, []);
