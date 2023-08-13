@@ -31,7 +31,7 @@ class Admin extends React.Component {
             }
             else {
                document.getElementById("error").style.display = "block";
-               document.getElementById("error").innerText = "Incorrect passcode. | High chance you might not be authorised to access this part.";
+               document.getElementById("error").innerText = "🚫Incorrect passcode. | High chance you might not be authorised to access this part.🚫";
             }
          })
          .catch((reason) => console.error(reason));

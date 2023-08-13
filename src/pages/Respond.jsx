@@ -73,6 +73,7 @@ class Respond extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.state = { 
          questions : [],
+         unanswered: [],
          _questionId: 0,
          _answerText: "",
          question: null
@@ -85,6 +86,15 @@ class Respond extends React.Component {
          .then((data) => {
             // the data is an array of objects
             this.setState(state => ({questions: data})); 
+         })
+         .catch((reason) => console.error(reason));
+
+      //Questions/GetUnAnswered
+      fetch(baseUrl + '/Questions/GetUnAnswered')
+         .then((res) => res.json()) // get the response and convert to json
+         .then((data) => {
+            // the data is an array of objects
+            this.setState(state => ({unanswered: data})); 
          })
          .catch((reason) => console.error(reason));
    }
@@ -148,14 +158,22 @@ class Respond extends React.Component {
                   <form onSubmit={this.handleSubmit} className="shadow p-3 bg-white rounded">
                      <div className="mb-3">
                      <label className="form-label" htmlFor="questionId">Question Id</label>
-                     <input 
+                     <select 
+                        name="questionId" id="questionId" className="form-control" 
+                        onChange={(e) => this.setState({_questionId: e.target.value})}
+                     >
+                        {this.state.unanswered.map((question, index) => {
+                           return <option key={question.questionId} value={question.questionId}>{question.questionId} created on {question.createdDate}</option>
+                        })}
+                     </select>
+                     {/* <input 
                         type="number"
                         className="form-control" 
                         name="questionId"
                         id="questionId" 
                         value={this.state._questionId}
                         onChange={(e) => this.setState({_questionId: e.target.value})}
-                     />
+                     /> */}
                      </div>                  
                      <div className="mb-3">
                         <label className="form-label" htmlFor="answerText">Response</label>
@@ -174,7 +192,7 @@ class Respond extends React.Component {
                   </form>
                </div>
                <div className="table-responsive">
-                  <table className="table table-info table-striped m-2">
+                  <table className="table table-info table-striped m-2 table-sm">
                      <thead>
                         <tr>
                            <th scope="col">Question Id</th>
@@ -197,7 +215,7 @@ class Respond extends React.Component {
       } else {
          return (
             <div className="container">
-               <h1 className="text-danger">You are not authorised to view this page.</h1>
+               <h1 className="text-danger">🚫You are not authorised to view this page.🚫</h1>
             </div>
          );
       }
