@@ -1,7 +1,6 @@
 import React from "react";
 
-const baseUrl = "https://fullstackqna-api.azurewebsites.net/api";
-// const baseUrl2 = "https://fullstackqnaapi20230713165053.azurewebsites.net/api";
+const baseUrl = process.env.REACT_APP_AWS_ASP_API_URL;
 
 class Delete extends React.Component {
    constructor(props) {

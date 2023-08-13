@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 const axios = require('axios').default;
 
-const baseUrl = "https://fullstackqna-api.azurewebsites.net/api";
-const baseUrl2 = "https://fsqna-api-aehqdzfua9g5exew.z01.azurefd.net/api";
+const baseUrl = process.env.REACT_APP_AWS_ASP_API_URL;
 
 function Answer(props) {
    // const pprops = JSON.
