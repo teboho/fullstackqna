@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const baseUrl = process.env.REACT_APP_AWS_ASP_API_URL;
+const baseUrl = process.env.REACT_APP_AZURE_ASP_API_URL;
 
 function Ask() {
   // Declare the states needed to store the input values, and functions to update those values| questionText, quester

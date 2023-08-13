@@ -1,7 +1,7 @@
 import React from "react";
 import Respond from "./Respond";
 
-const baseUrl = process.env.REACT_APP_AWS_ASP_API_URL;
+const baseUrl = process.env.REACT_APP_AZURE_ASP_API_URL;
 
 class Admin extends React.Component {
    constructor(props) {

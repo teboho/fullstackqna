@@ -1,6 +1,6 @@
 import React from "react";
 
-const baseUrl = process.env.REACT_APP_AWS_ASP_API_URL;
+const baseUrl = process.env.REACT_APP_AZURE_ASP_API_URL;
 
 class Delete extends React.Component {
    constructor(props) {

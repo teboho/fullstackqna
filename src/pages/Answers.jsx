@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 const axios = require('axios').default;
 
-const baseUrl = process.env.REACT_APP_AWS_ASP_API_URL;
+const baseUrl = process.env.REACT_APP_AZURE_ASP_API_URL;
 
 function Answer(props) {
    // const pprops = JSON.
