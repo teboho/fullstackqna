@@ -53,6 +53,7 @@ function Ask() {
             className="form-control"
             value={questionText}
             placeholder="Enter the question here ..."
+            required="true"
             onChange={(e) => setQuestionText(e.target.value)}
           />
           {/* <div id="questionHelp" class="form-text">Well, you have to type something..</div> */}
@@ -65,6 +66,7 @@ function Ask() {
             className="form-control"
             value={quester}
             placeholder="Who's asking the question?"
+            required="true"
             onChange={(e) => setQuester(e.target.value)}
           />
         </div>
