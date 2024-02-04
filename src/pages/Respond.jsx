@@ -85,7 +85,9 @@ class Respond extends React.Component {
          .then((res) => res.json()) // get the response and convert to json
          .then((data) => {
             // the data is an array of objects
-            this.setState(state => ({questions: data})); 
+            this.setState(state => ({questions: data})); // i.e. questions is an array of objects
+            console.log("_----------------Answererd-----------------_");
+            console.log(data);
          })
          .catch((reason) => console.error(reason));
 
@@ -94,9 +96,18 @@ class Respond extends React.Component {
          .then((res) => res.json()) // get the response and convert to json
          .then((data) => {
             // the data is an array of objects
-            this.setState(state => ({unanswered: data})); 
+            this.setState(state => ({unanswered: data})); // i.e. questions is an array of objects
+            console.log("_---------------Unanswered------------------_");
+            console.log(data[0]);
+            return data[0]; // pass on the first element
          })
+         .then((first) => 
+            // We need to set the default chosen question as the latest...
+            this.setState({ _questionId: first.questionId })
+         )
          .catch((reason) => console.error(reason));
+
+         
    }
 
    async handleSubmit(e) {
@@ -159,11 +170,19 @@ class Respond extends React.Component {
                      <div className="mb-3">
                      <label className="form-label" htmlFor="questionId">Question Id</label>
                      <select 
-                        name="questionId" id="questionId" className="form-control" 
-                        onChange={(e) => this.setState({_questionId: e.target.value})}
+                        name="questionId" id="questionId" className="form-control"
+                        onChange={(e) => 
+                           {
+                              this.setState({ _questionId: e.target.value });
+                              console.log("\tAnswering question: ");
+                              console.log(e.target.value);
+                           }
+                        }
                      >
                         {this.state.unanswered.map((question, index) => {
-                           return <option key={question.questionId} value={question.questionId}>{question.questionId} created on {question.createdDate}</option>
+                           return (<option key={question.questionId} value={question.questionId}                           >
+                                    {question.questionId} created on {question.createdDate}
+                              </option>);
                         })}
                      </select>
                      {/* <input 
